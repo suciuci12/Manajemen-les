@@ -24,20 +24,20 @@ export async function POST(request) {
       );
     }
 
-    // 2. Validasi alamat aplikasi
+    // 2. Ambil URL aplikasi dari environment variable
     const appUrl = process.env.APP_URL;
 
     if (!appUrl) {
       return NextResponse.json(
         {
           success: false,
-          message: "APP_URL belum diatur di .env.local.",
+          message: "APP_URL belum diatur.",
         },
         { status: 500 }
       );
     }
 
-    // 3. Ambil ID peserta
+    // 3. Ambil dan validasi ID peserta
     const body = await request.json();
     const pesertaId = Number(body.pesertaId);
 
@@ -82,7 +82,10 @@ export async function POST(request) {
 
     const peserta = pesertaRows[0];
 
-    if (!peserta.parent_user_id || !peserta.nama_orang_tua) {
+    if (
+      !peserta.parent_user_id ||
+      !peserta.nama_orang_tua
+    ) {
       return NextResponse.json(
         {
           success: false,
@@ -93,7 +96,7 @@ export async function POST(request) {
       );
     }
 
-    // 5. Buat token dan simpan hash-nya
+    // 5. Buat token dan tautan akses
     const token = buatTokenAkses();
     const tokenHash = hashToken(token);
 
@@ -101,16 +104,15 @@ export async function POST(request) {
       Date.now() + 30 * 24 * 60 * 60 * 1000
     );
 
-     const baseUrl = (
-  process.env.NEXT_PUBLIC_APP_URL ||
-  "http://localhost:3000"
-).replace(/\/+$/, "");
-
-const link = `${baseUrl}/orang-tua/akses?token=${token}`;
+    const baseUrl = appUrl.replace(/\/+$/, "");
+    const link = new URL(
+      "/orang-tua/akses",
+      `${baseUrl}/`
+    );
 
     link.searchParams.set("token", token);
 
-    // 6. Perbarui tautan secara transaksional
+    // 6. Simpan hash token ke database
     connection = await db.getConnection();
     await connection.beginTransaction();
 
@@ -136,19 +138,22 @@ const link = `${baseUrl}/orang-tua/akses?token=${token}`;
 
     await connection.commit();
 
+    const linkOrangTua = link.toString();
+
     const pesanWhatsApp =
       `Halo ${peserta.nama_orang_tua}, berikut tautan ` +
       `untuk memantau jadwal dan presensi les ` +
-      `${peserta.nama} melalui Manuli:\n\n${link.toString()}\n\n` +
-      `Tautan berlaku selama 30 hari. Mohon tidak membagikannya ` +
-      `kepada orang lain.`;
+      `${peserta.nama} melalui Manuli:\n\n` +
+      `${linkOrangTua}\n\n` +
+      `Tautan berlaku selama 30 hari. Mohon tidak ` +
+      `membagikannya kepada orang lain.`;
 
     return NextResponse.json({
       success: true,
       message: "Tautan akses berhasil dibuat.",
       namaPeserta: peserta.nama,
       namaOrangTua: peserta.nama_orang_tua,
-      link: link.toString(),
+      link: linkOrangTua,
       whatsappUrl:
         "https://wa.me/?text=" +
         encodeURIComponent(pesanWhatsApp),
@@ -159,7 +164,10 @@ const link = `${baseUrl}/orang-tua/akses?token=${token}`;
       await connection.rollback();
     }
 
-    console.error("Gagal membuat tautan orang tua:", error);
+    console.error(
+      "Gagal membuat tautan orang tua:",
+      error
+    );
 
     return NextResponse.json(
       {
