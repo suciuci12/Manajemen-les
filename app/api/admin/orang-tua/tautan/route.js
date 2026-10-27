@@ -101,10 +101,10 @@ export async function POST(request) {
       Date.now() + 30 * 24 * 60 * 60 * 1000
     );
 
-    const link = new URL(
-      "/orang-tua/akses",
-      appUrl
-    );
+          const baseUrl =
+        process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
+      const link = `${baseUrl}/orang-tua/akses?token=${token}`;
 
     link.searchParams.set("token", token);
 
