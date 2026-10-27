@@ -7,6 +7,8 @@ import {
   hashToken,
 } from "@/lib/parent-access";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     const cookieStore = await cookies();
