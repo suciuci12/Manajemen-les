@@ -1,0 +1,1358 @@
+
+/* ==========================================
+   MANULI LOGIN
+   Lavender pastel + LED + animasi maskot
+   CSS murni, tanpa Tailwind
+========================================== */
+
+.login-page {
+  --purple: #9561e8;
+  --purple-dark: #7545cc;
+  --purple-light: #c7adff;
+  --text: #35264f;
+  --muted: #89809e;
+  --border: #e9e0f8;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 30px 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+
+  background:
+    radial-gradient(ellipse at 8% 8%, #e5d7ff 0%, transparent 35%),
+    radial-gradient(ellipse at 95% 85%, #ffdef0 0%, transparent 35%),
+    radial-gradient(ellipse at 75% 5%, #e5f3ff 0%, transparent 32%),
+    #faf8ff;
+}
+
+.login-page *,
+.login-page *::before,
+.login-page *::after {
+  box-sizing: border-box;
+}
+
+.login-page button,
+.login-page input {
+  font: inherit;
+}
+
+/* Latar bercahaya */
+
+.login-background-glow {
+  position: absolute;
+  z-index: -1;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.3;
+  pointer-events: none;
+  animation: backgroundGlow 7s ease-in-out infinite alternate;
+}
+
+.glow-left {
+  top: -130px;
+  left: -90px;
+  background: #b99aff;
+}
+
+.glow-right {
+  right: -100px;
+  bottom: -120px;
+  background: #f2a9dc;
+  animation-delay: 2s;
+}
+
+@keyframes backgroundGlow {
+  from {
+    transform: scale(0.9);
+    opacity: 0.2;
+  }
+
+  to {
+    transform: scale(1.2);
+    opacity: 0.38;
+  }
+}
+
+/* Kartu utama */
+
+.login-card {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 690px;
+
+  display: grid;
+  grid-template-columns: 0.96fr 1.04fr;
+
+  position: relative;
+  overflow: hidden;
+
+  border: 1px solid #e7dcfb;
+  border-radius: 25px;
+
+  background: #ffffffed;
+
+  box-shadow:
+    0 0 0 1px #ffffff,
+    0 0 28px #b99aff25,
+    0 25px 80px #7862a51c;
+}
+
+/* ==========================================
+   FORM LOGIN
+========================================== */
+
+.login-form-panel {
+  min-width: 0;
+  padding: 40px 45px 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: #ffffff;
+}
+
+/* Logo */
+
+.login-brand {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 12px;
+
+  margin-bottom: 39px;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.login-brand-icon {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #d9c8ff;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #bda3ff, #8b5ce8);
+  color: white;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  box-shadow:
+    0 0 12px #b69aff60,
+    0 0 28px #b69aff25;
+}
+
+.login-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.login-brand-text strong {
+  color: #392850;
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.login-brand-text small {
+  color: #978ba9;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+/* Sambutan */
+
+.login-heading {
+  margin-bottom: 28px;
+}
+
+.login-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 17px;
+
+  color: #8958dc;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.status-light {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: #6ed7a1;
+
+  box-shadow: 0 0 9px #6ed7a1a0;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 5px #6ed7a160;
+  }
+
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 13px #6ed7a1c0;
+  }
+}
+
+.login-heading h1 {
+  margin: 0;
+
+  color: #34264d;
+  font-size: clamp(33px, 3.4vw, 45px);
+  font-weight: 750;
+  letter-spacing: -1.8px;
+  line-height: 1.15;
+}
+
+.login-heading h1 span {
+  color: #9561e8;
+  text-shadow: 0 0 20px #c7adff45;
+}
+
+.login-heading p {
+  max-width: 350px;
+  margin: 15px 0 0;
+
+  color: #89809e;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+/* Form */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.login-field label {
+  color: #57466e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.login-field input {
+  width: 100%;
+  min-width: 0;
+  height: 49px;
+
+  padding: 0 15px;
+
+  border: 1px solid #e4daf4;
+  border-radius: 10px;
+
+  outline: none;
+  background: #fcfaff;
+  color: #35264f;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.login-field input::placeholder {
+  color: #b0a7c0;
+}
+
+.login-field input:focus {
+  border-color: #a787ee;
+  background: white;
+
+  box-shadow:
+    0 0 0 3px #a787ee18,
+    0 0 17px #b99aff20;
+}
+
+.login-field input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Lihat kata sandi */
+
+.login-password-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.login-password-wrap input {
+  padding-right: 100px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+
+  padding: 7px 0;
+
+  border: none;
+  background: transparent;
+
+  color: #8859d9;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  cursor: pointer;
+}
+
+.password-toggle:hover {
+  color: #6538b6;
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid #a787ee;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Pesan error */
+
+.login-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+
+  margin: 0;
+  padding: 12px 13px;
+
+  border: 1px solid #ffc9d2;
+  border-radius: 9px;
+
+  background: #fff4f5;
+  color: #b42345;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.error-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #ffe0e5;
+  font-weight: 700;
+}
+
+/* Tombol masuk */
+
+.login-submit {
+  width: 100%;
+  min-height: 51px;
+
+  margin-top: 3px;
+  padding: 0 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  border: 1px solid #c7adff;
+  border-radius: 10px;
+
+  background: linear-gradient(105deg, #a77af4, #8754e5);
+  color: white;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 10px #a77af43d,
+    0 6px 18px #a77af425,
+    inset 0 1px 0 #ffffff65;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.login-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+
+  box-shadow:
+    0 0 15px #a77af470,
+    0 8px 24px #a77af43d,
+    inset 0 1px 0 #ffffff75;
+}
+
+.login-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.login-submit-arrow {
+  font-size: 21px;
+  font-weight: 400;
+}
+
+/* Jenis pengguna */
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.login-divider span {
+  height: 1px;
+  flex: 1;
+  background: #e9e1f5;
+}
+
+.login-divider small {
+  color: #9b91b2;
+  font-size: 8px;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+.login-roles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 17px;
+}
+
+.login-role-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #817397;
+  font-size: 11px;
+}
+
+.role-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.role-admin {
+  background: #a78bfa;
+  box-shadow: 0 0 7px #a78bfa70;
+}
+
+.role-tutor {
+  background: #f09bc9;
+  box-shadow: 0 0 7px #f09bc970;
+}
+
+.role-parent {
+  background: #7bcdb3;
+  box-shadow: 0 0 7px #7bcdb370;
+}
+
+/* Kredit pendiri */
+
+.login-founder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 25px;
+  text-align: center;
+}
+
+.founder-line {
+  width: 38px;
+  height: 2px;
+
+  margin-bottom: 11px;
+  border-radius: 10px;
+
+  background: linear-gradient(90deg, #c4a8ff, #f1b7df);
+  box-shadow: 0 0 10px #b99aff50;
+}
+
+.login-founder p {
+  margin: 0 0 5px;
+  color: #9186a7;
+  font-size: 11px;
+}
+
+.login-founder strong {
+  color: #574078;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.founder-title {
+  margin-top: 5px;
+  color: #9566df;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* Footer */
+
+.login-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin: 19px 0 0;
+
+  color: #a39bb4;
+  font-size: 9px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.login-footer span {
+  color: #b49ae8;
+}
+
+/* ==========================================
+   PANEL MASKOT
+========================================== */
+
+.login-visual {
+  min-width: 0;
+  min-height: 690px;
+
+  padding: 28px 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  border-left: 1px solid #eee5ff;
+
+  background:
+    radial-gradient(ellipse at 50% 38%, #ffffffd9, transparent 43%),
+    radial-gradient(ellipse at 10% 85%, #ffe3f3, transparent 42%),
+    radial-gradient(ellipse at 100% 15%, #dcd4ff, transparent 38%),
+    linear-gradient(145deg, #f0e8ff, #faf6ff 52%, #e9e7ff);
+}
+
+/* Kisi digital */
+
+.visual-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  opacity: 0.35;
+
+  background-image:
+    linear-gradient(#b49ae830 1px, transparent 1px),
+    linear-gradient(90deg, #b49ae830 1px, transparent 1px);
+
+  background-size: 34px 34px;
+  pointer-events: none;
+}
+
+/* Lingkaran dekoratif */
+
+.visual-orbit {
+  position: absolute;
+  z-index: -1;
+
+  border: 1px solid #b69aff45;
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.orbit-one {
+  width: 300px;
+  height: 300px;
+  top: 15%;
+  left: -215px;
+  box-shadow: 0 0 20px #b69aff20;
+}
+
+.orbit-two {
+  width: 390px;
+  height: 390px;
+  right: -250px;
+  bottom: 6%;
+  border-color: #e2b6ee50;
+}
+
+/* Garis panel */
+
+.visual-topline,
+.visual-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  position: relative;
+  z-index: 3;
+
+  color: #8c7aa9;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+.visual-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #428b70;
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.visual-live i {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: #6bd8a5;
+  box-shadow: 0 0 9px #6bd8a580;
+
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* Konten tengah */
+
+.visual-center {
+  width: 100%;
+  max-width: 390px;
+  margin: 25px auto;
+
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+/* ==========================================
+   ANIMASI MASKOT
+========================================== */
+
+.mascot-stage {
+  width: 100%;
+  max-width: 285px;
+  aspect-ratio: 1 / 1;
+
+  margin: 0 auto 20px;
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+  isolation: isolate;
+}
+
+/* Cahaya LED */
+
+.mascot-glow {
+  position: absolute;
+  z-index: -2;
+
+  width: 72%;
+  height: 72%;
+
+  border-radius: 50%;
+  background: #c49aff;
+
+  filter: blur(40px);
+  opacity: 0.6;
+
+  animation: ledPulse 2.5s ease-in-out infinite;
+}
+
+/* Lingkaran cahaya luar */
+
+.mascot-halo {
+  position: absolute;
+  z-index: -1;
+
+  width: 88%;
+  height: 88%;
+
+  border: 1px solid #ad8beb65;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 18px #bd9aff30,
+    inset 0 0 18px #bd9aff18;
+
+  animation: haloRotate 16s linear infinite;
+}
+
+.mascot-halo::before,
+.mascot-halo::after {
+  content: "";
+  position: absolute;
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+  background: #b38af7;
+
+  box-shadow: 0 0 12px #a77af4a0;
+}
+
+.mascot-halo::before {
+  top: 13%;
+  left: 14%;
+}
+
+.mascot-halo::after {
+  right: 11%;
+  bottom: 19%;
+  background: #f1a5d4;
+  box-shadow: 0 0 12px #f1a5d480;
+}
+
+@keyframes haloRotate {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* Gambar maskot */
+
+.manuli-mascot {
+  display: block;
+
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  border-radius: 18px;
+
+  filter: drop-shadow(0 12px 16px #8760b52b);
+
+  animation: mascotFloat 2.8s ease-in-out infinite;
+
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes mascotFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-13px) rotate(1deg) scale(1.025);
+  }
+}
+
+/* Cahaya berdenyut */
+
+@keyframes ledPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.12);
+  }
+}
+
+/* Bintang */
+
+.mascot-sparkle {
+  position: absolute;
+  z-index: 3;
+
+  pointer-events: none;
+
+  color: #8954e8;
+  text-shadow: 0 0 12px #bd9aff;
+
+  animation: sparkleTwinkle 1.8s ease-in-out infinite;
+}
+
+.sparkle-one {
+  top: 8%;
+  right: 4%;
+  font-size: 28px;
+}
+
+.sparkle-two {
+  left: 1%;
+  top: 37%;
+
+  color: #e995c8;
+  font-size: 30px;
+
+  animation-delay: 0.5s;
+}
+
+.sparkle-three {
+  right: 8%;
+  bottom: 10%;
+
+  font-size: 22px;
+  animation-delay: 0.9s;
+}
+
+.sparkle-four {
+  left: 12%;
+  bottom: 16%;
+
+  color: #e995c8;
+  font-size: 18px;
+
+  animation-delay: 1.2s;
+}
+
+@keyframes sparkleTwinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.7) rotate(-15deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25) rotate(15deg);
+  }
+}
+
+/* Titik cahaya kecil */
+
+.mascot-dot {
+  position: absolute;
+  z-index: 2;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+  background: #b895fa;
+
+  box-shadow: 0 0 10px #a77af4b0;
+
+  pointer-events: none;
+
+  animation: dotBlink 2.2s ease-in-out infinite;
+}
+
+.dot-one {
+  top: 25%;
+  left: 9%;
+}
+
+.dot-two {
+  right: 7%;
+  top: 52%;
+
+  background: #f0a5d4;
+  animation-delay: 0.7s;
+}
+
+.dot-three {
+  bottom: 23%;
+  left: 22%;
+
+  animation-delay: 1.2s;
+}
+
+@keyframes dotBlink {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.7);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+/* Judul panel */
+
+.visual-label {
+  display: inline-block;
+
+  padding: 7px 13px;
+
+  border: 1px solid #d9c8fa;
+  border-radius: 30px;
+
+  background: #ffffffa8;
+  color: #8759d9;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  box-shadow: 0 0 14px #c7adff20;
+}
+
+.visual-center h2 {
+  margin: 17px 0 0;
+
+  color: #39294f;
+
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 750;
+  letter-spacing: -0.8px;
+  line-height: 1.35;
+}
+
+.visual-center h2 span {
+  color: #9665e9;
+  text-shadow: 0 0 20px #c4a9ff40;
+}
+
+.visual-description {
+  max-width: 310px;
+  margin: 14px auto 0;
+
+  color: #817493;
+  font-size: 12px;
+  line-height: 1.85;
+}
+
+/* Fitur aplikasi */
+
+.visual-features {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 21px auto 0;
+  text-align: left;
+}
+
+.visual-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #66577d;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.feature-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #d7c5ff;
+  border-radius: 50%;
+
+  background: #ffffffb8;
+  color: #8958dc;
+
+  box-shadow: 0 0 10px #b99aff20;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Garis LED dekoratif */
+
+.visual-line {
+  width: 125px;
+  height: 2px;
+
+  margin: 22px auto 0;
+
+  background: #cbb8f750;
+}
+
+.visual-line span {
+  display: block;
+
+  width: 45%;
+  height: 100%;
+  margin: auto;
+
+  background: #a77af4;
+  box-shadow: 0 0 12px #a77af4a0;
+
+  animation: lineGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes lineGlow {
+  from {
+    width: 30%;
+    opacity: 0.5;
+  }
+
+  to {
+    width: 85%;
+    opacity: 1;
+  }
+}
+
+/* Efek saat kursor diarahkan ke maskot */
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .mascot-stage:hover .manuli-mascot {
+    animation-play-state: paused;
+    transform: translateY(-7px) scale(1.06) rotate(1deg);
+    transition: transform 0.3s ease;
+  }
+}
+
+/* ==========================================
+   RESPONSIF TABLET
+========================================== */
+
+@media (max-width: 900px) {
+  .login-page {
+    padding: 24px 16px;
+    align-items: flex-start;
+  }
+
+  .login-card {
+    max-width: 560px;
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .login-form-panel {
+    padding: 35px 35px 27px;
+  }
+
+  .login-brand {
+    margin-bottom: 32px;
+  }
+
+  .login-heading h1 {
+    font-size: 39px;
+  }
+
+  .login-visual {
+    display: flex;
+    min-height: auto;
+    padding: 26px 25px;
+    border-top: 1px solid #eee5ff;
+    border-left: none;
+  }
+
+  .visual-center {
+    margin: 22px auto;
+  }
+
+  .mascot-stage {
+    max-width: 230px;
+    margin-bottom: 18px;
+  }
+
+  .visual-center h2 {
+    font-size: 29px;
+  }
+
+  .visual-features {
+    margin-top: 20px;
+  }
+}
+
+/* ==========================================
+   RESPONSIF HP
+========================================== */
+
+@media (max-width: 480px) {
+  .login-page {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 18px;
+  }
+
+  .login-form-panel {
+    padding: 26px 20px 23px;
+  }
+
+  .login-brand {
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .login-brand-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+  }
+
+  .login-brand-text strong {
+    font-size: 16px;
+  }
+
+  .login-brand-text small {
+    font-size: 8px;
+  }
+
+  .login-heading {
+    margin-bottom: 24px;
+  }
+
+  .login-heading h1 {
+    font-size: 35px;
+    letter-spacing: -1.2px;
+  }
+
+  .login-heading p {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .login-form {
+    gap: 18px;
+  }
+
+  .login-field input {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .login-submit {
+    min-height: 49px;
+  }
+
+  .login-divider {
+    gap: 8px;
+    margin-top: 23px;
+  }
+
+  .login-divider small {
+    font-size: 7px;
+  }
+
+  .login-roles {
+    gap: 13px;
+    margin-top: 16px;
+  }
+
+  .login-role-item {
+    font-size: 10px;
+  }
+
+  .login-founder {
+    margin-top: 23px;
+  }
+
+  .login-footer {
+    font-size: 8px;
+    margin-top: 17px;
+  }
+
+  .login-visual {
+    padding: 22px 16px;
+  }
+
+  .visual-topline,
+  .visual-bottom {
+    font-size: 7px;
+    letter-spacing: 0.5px;
+  }
+
+  .mascot-stage {
+    max-width: min(230px, 75vw);
+  }
+
+  .visual-center h2 {
+    font-size: 25px;
+  }
+
+  .visual-description {
+    max-width: 290px;
+    font-size: 12px;
+  }
+
+  .visual-feature {
+    font-size: 11px;
+  }
+}
+
+/* HP sangat kecil */
+
+@media (max-width: 350px) {
+  .login-form-panel {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .login-heading h1 {
+    font-size: 31px;
+  }
+
+  .login-roles {
+    gap: 9px;
+  }
+
+  .login-role-item {
+    font-size: 9px;
+  }
+
+  .visual-topline,
+  .visual-bottom {
+    font-size: 6px;
+  }
+
+  .visual-center h2 {
+    font-size: 22px;
+  }
+}
+
+/* Layar desktop pendek */
+
+@media (min-width: 901px) and (max-height: 780px) {
+  .login-page {
+    align-items: flex-start;
+  }
+
+  .login-card {
+    min-height: 650px;
+  }
+
+  .login-form-panel {
+    padding-top: 25px;
+    padding-bottom: 22px;
+  }
+
+  .login-brand {
+    margin-bottom: 25px;
+  }
+
+  .login-heading {
+    margin-bottom: 20px;
+  }
+
+  .login-visual {
+    min-height: 650px;
+    padding-top: 23px;
+    padding-bottom: 23px;
+  }
+
+  .mascot-stage {
+    max-width: 220px;
+    margin-bottom: 14px;
+  }
+
+  .visual-center {
+    margin: 17px auto;
+  }
+
+  .visual-features {
+    gap: 7px;
+    margin-top: 15px;
+  }
+
+  .visual-line {
+    margin-top: 15px;
+  }
+}
+
+/* Aksesibilitas: hormati pilihan pengurangan animasi */
+
+@media (prefers-reduced-motion: reduce) {
+  .login-background-glow,
+  .status-light,
+  .visual-live i,
+  .mascot-glow,
+  .mascot-halo,
+  .manuli-mascot,
+  .mascot-sparkle,
+  .mascot-dot,
+  .visual-line span {
+    animation: none !important;
+  }
+
+  .login-submit,
+  .login-field input {
+    transition: none;
+  }
+
+  .mascot-stage:hover .manuli-mascot {
+    transform: none;
+  }
+}

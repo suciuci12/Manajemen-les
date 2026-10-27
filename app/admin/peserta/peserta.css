@@ -1,0 +1,1064 @@
+
+/* =========================================
+   MANULI - HALAMAN DATA PESERTA
+   Tema: Modern Purple Dashboard
+========================================= */
+
+.peserta-page {
+  --ungu: #8064d8;
+  --ungu-gelap: #6848bd;
+  --ungu-muda: #f1edff;
+  --ungu-border: #e6defa;
+  --teks: #302744;
+  --teks-redup: #8a829c;
+  --putih: #ffffff;
+  --garis: #eeeaf5;
+  --merah: #d94f6b;
+  --merah-muda: #fff0f3;
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 32px;
+  color: var(--teks);
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(207, 192, 255, 0.28),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 100% 15%,
+      rgba(247, 215, 255, 0.3),
+      transparent 28%
+    ),
+    #f7f6fb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.peserta-page *,
+.peserta-page *::before,
+.peserta-page *::after {
+  box-sizing: border-box;
+}
+
+.peserta-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Efek latar */
+
+.peserta-glow {
+  position: absolute;
+  z-index: -1;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: pesertaGlow 9s ease-in-out infinite alternate;
+}
+
+.peserta-glow-satu {
+  top: 100px;
+  left: -170px;
+  background: #b9a5ff;
+}
+
+.peserta-glow-dua {
+  top: 450px;
+  right: -170px;
+  background: #edb9f0;
+  animation-delay: 2s;
+}
+
+@keyframes pesertaGlow {
+  from {
+    transform: translateY(0) scale(0.9);
+  }
+
+  to {
+    transform: translateY(25px) scale(1.08);
+  }
+}
+
+/* Header */
+
+.peserta-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.peserta-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 12px;
+  color: var(--ungu-gelap);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.peserta-live-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #9275ec;
+  box-shadow: 0 0 0 4px rgba(146, 117, 236, 0.12);
+  animation: pesertaBerkedip 2s ease-in-out infinite;
+}
+
+@keyframes pesertaBerkedip {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.peserta-heading h1 {
+  margin: 0;
+  color: var(--teks);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -1.1px;
+  line-height: 1.2;
+}
+
+.peserta-subtitle {
+  max-width: 650px;
+  margin: 11px 0 0;
+  color: var(--teks-redup);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Tombol umum */
+
+.peserta-back-button,
+.peserta-add-button,
+.peserta-refresh-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 43px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.peserta-back-button {
+  flex-shrink: 0;
+  border-color: var(--ungu-border);
+  color: #6d57b5;
+  background: var(--putih);
+}
+
+.peserta-back-button:hover {
+  border-color: #cfc0f4;
+  background: #faf8ff;
+  box-shadow: 0 5px 16px rgba(88, 66, 150, 0.07);
+  transform: translateY(-1px);
+}
+
+.peserta-back-button span {
+  font-size: 17px;
+}
+
+.peserta-add-button {
+  flex-shrink: 0;
+  color: var(--putih);
+  background: linear-gradient(135deg, #8b72e0, #7054c5);
+  box-shadow: 0 5px 13px rgba(112, 84, 197, 0.19);
+}
+
+.peserta-add-button:hover {
+  background: linear-gradient(135deg, #7b61d2, #6245b3);
+  box-shadow: 0 8px 18px rgba(112, 84, 197, 0.25);
+  transform: translateY(-1px);
+}
+
+.peserta-add-button span {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.peserta-refresh-button {
+  flex-shrink: 0;
+  border-color: var(--ungu-border);
+  color: #7058b9;
+  background: #faf8ff;
+}
+
+.peserta-refresh-button:hover:not(:disabled) {
+  border-color: #d0c3f4;
+  background: var(--ungu-muda);
+}
+
+.peserta-refresh-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+/* Kartu total peserta */
+
+.peserta-stat-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  max-width: 370px;
+  min-height: 112px;
+  margin-bottom: 25px;
+  padding: 23px;
+  overflow: hidden;
+  border: 1px solid var(--garis);
+  border-radius: 17px;
+  background: var(--putih);
+  box-shadow: 0 5px 20px rgba(49, 35, 88, 0.035);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.peserta-stat-card::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 85px;
+  height: 85px;
+  border-radius: 0 0 0 100%;
+  background: rgba(237, 231, 255, 0.55);
+  content: "";
+  pointer-events: none;
+}
+
+.peserta-stat-card:hover {
+  box-shadow: 0 9px 25px rgba(49, 35, 88, 0.07);
+  transform: translateY(-2px);
+}
+
+.peserta-stat-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 53px;
+  height: 53px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid #e5dcff;
+  border-radius: 14px;
+  color: #7659ce;
+  background: linear-gradient(145deg, #f3efff, #e9e1ff);
+  font-size: 27px;
+}
+
+.peserta-stat-card > div:nth-child(2) {
+  position: relative;
+  z-index: 1;
+}
+
+.peserta-stat-card p {
+  margin: 0 0 6px;
+  color: var(--teks-redup);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.peserta-stat-card h2 {
+  margin: 0;
+  color: var(--teks);
+  font-size: 29px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.peserta-stat-caption {
+  position: relative;
+  z-index: 1;
+  max-width: 95px;
+  margin-left: auto;
+  color: #9589b4;
+  font-size: 10px;
+  line-height: 1.6;
+  text-align: right;
+}
+
+/* Kartu daftar peserta */
+
+.peserta-table-card {
+  overflow: hidden;
+  border: 1px solid var(--garis);
+  border-radius: 18px;
+  background: var(--putih);
+  box-shadow: 0 6px 25px rgba(49, 35, 88, 0.035);
+}
+
+.peserta-table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 25px 21px;
+}
+
+.peserta-table-heading h2 {
+  margin: 0;
+  color: var(--teks);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.peserta-table-heading p {
+  margin: 8px 0 0;
+  color: var(--teks-redup);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Pencarian */
+
+.peserta-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 25px 20px;
+}
+
+.peserta-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 440px;
+  min-height: 43px;
+  padding: 0 13px;
+  border: 1px solid #eae6f2;
+  border-radius: 11px;
+  background: #fbfaff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.peserta-search:focus-within {
+  border-color: #aa96ec;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(128, 100, 216, 0.1);
+}
+
+.peserta-search > span {
+  color: #8c79ce;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.peserta-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: var(--teks);
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.peserta-search input::placeholder {
+  color: #aaa3b9;
+}
+
+/* Pesan kesalahan */
+
+.peserta-alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 25px 20px;
+  padding: 13px 15px;
+  border: 1px solid #f2cbd4;
+  border-radius: 11px;
+  color: #a33e59;
+  background: #fff5f6;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.peserta-alert p {
+  margin: 0;
+}
+
+.peserta-alert button {
+  flex-shrink: 0;
+  border: 0;
+  color: #a33e59;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.peserta-alert button:hover {
+  text-decoration: underline;
+}
+
+/* Tabel */
+
+.peserta-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-color: #d5caef #f7f4fc;
+  scrollbar-width: thin;
+}
+
+.peserta-table {
+  width: 100%;
+  min-width: 1150px;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.peserta-table thead {
+  background: #f8f6fc;
+}
+
+.peserta-table th {
+  padding: 15px 17px;
+  border-top: 1px solid #f0edf6;
+  border-bottom: 1px solid #ece8f3;
+  color: #817893;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+}
+
+.peserta-table td {
+  padding: 14px 17px;
+  border-bottom: 1px solid #f1eef6;
+  color: #716980;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.peserta-table tbody tr {
+  transition: background 0.18s ease;
+}
+
+.peserta-table tbody tr:hover {
+  background: #fbfaff;
+}
+
+.peserta-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.peserta-table th:first-child,
+.peserta-table td:first-child {
+  padding-left: 25px;
+}
+
+.peserta-table th:last-child,
+.peserta-table td:last-child {
+  padding-right: 25px;
+}
+
+/* Nama dan avatar */
+
+.peserta-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #3c334e;
+}
+
+.peserta-name-cell strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.peserta-avatar {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid #e5ddfb;
+  border-radius: 11px;
+  color: #755bc2;
+  background: linear-gradient(145deg, #f4f0ff, #eae3ff);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* Tombol tindakan */
+
+.peserta-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-width: 180px;
+  max-width: 430px;
+  white-space: normal;
+}
+
+.peserta-edit-button,
+.peserta-delete-button,
+.peserta-link-button,
+.peserta-copy-link-button,
+.peserta-whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 11px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.peserta-edit-button {
+  border-color: #e5dcfb;
+  color: #7154bd;
+  background: #f4f0ff;
+}
+
+.peserta-edit-button:hover {
+  border-color: #d5c7f5;
+  background: #eae2ff;
+  transform: translateY(-1px);
+}
+
+.peserta-delete-button {
+  border-color: #f7dce2;
+  color: #c34d68;
+  background: #fff3f5;
+}
+
+.peserta-delete-button:hover:not(:disabled) {
+  border-color: #f0c3ce;
+  background: #ffe7ec;
+  transform: translateY(-1px);
+}
+
+.peserta-delete-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.peserta-link-button {
+  color: #fff;
+  background: #7658c8;
+  box-shadow: 0 3px 9px rgba(118, 88, 200, 0.15);
+}
+
+.peserta-link-button:hover:not(:disabled) {
+  background: #6243b3;
+  transform: translateY(-1px);
+}
+
+.peserta-link-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.peserta-copy-link-button {
+  border-color: #dfd4fa;
+  color: #6848bd;
+  background: #f4f0ff;
+}
+
+.peserta-copy-link-button:hover {
+  background: #e9e0ff;
+}
+
+.peserta-whatsapp-button {
+  border-color: #c6ead5;
+  color: #176c43;
+  background: #eaf8ef;
+}
+
+.peserta-whatsapp-button:hover {
+  background: #d8f3e2;
+}
+
+.peserta-link-hint {
+  display: block;
+  margin-top: 7px;
+  color: #9589a9;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+/* Data kosong */
+
+.peserta-empty {
+  height: 175px;
+  padding: 25px !important;
+  color: #9890a8 !important;
+  text-align: center !important;
+  vertical-align: middle;
+}
+
+.peserta-empty-icon {
+  display: block;
+  margin: 0 auto 10px;
+  color: #a292e2;
+  font-size: 30px;
+}
+
+.peserta-empty strong,
+.peserta-empty span {
+  display: block;
+}
+
+.peserta-empty strong {
+  margin-bottom: 7px;
+  color: #645a79;
+  font-size: 13px;
+}
+
+.peserta-empty span {
+  color: #9c94ab;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* Animasi memuat */
+
+.peserta-spinner {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 0 auto 12px;
+  border: 3px solid #eee8ff;
+  border-top-color: var(--ungu);
+  border-radius: 50%;
+  animation: pesertaPutar 0.8s linear infinite;
+}
+
+@keyframes pesertaPutar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer */
+
+.peserta-table-footer {
+  padding: 15px 25px;
+  border-top: 1px solid #f0edf6;
+  color: #938ba4;
+  background: #fff;
+  font-size: 11px;
+}
+
+.peserta-page-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 22px 3px 0;
+  color: #9991a9;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.peserta-page-footer strong {
+  color: #765bbf;
+}
+
+/* Modal edit peserta */
+
+.peserta-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgba(35, 26, 57, 0.48);
+  backdrop-filter: blur(6px);
+  animation: pesertaOverlayMasuk 0.18s ease;
+}
+
+@keyframes pesertaOverlayMasuk {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.peserta-modal {
+  width: 100%;
+  max-width: 510px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding: 27px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 19px;
+  background: #fff;
+  box-shadow: 0 24px 75px rgba(36, 25, 61, 0.2);
+  animation: pesertaModalMasuk 0.22s ease;
+}
+
+@keyframes pesertaModalMasuk {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.peserta-modal-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 23px;
+}
+
+.peserta-modal-heading h2 {
+  margin: 0;
+  color: var(--teks);
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.peserta-modal-heading p {
+  margin: 8px 0 0;
+  color: var(--teks-redup);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.peserta-modal-close {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid #eee8f6;
+  border-radius: 10px;
+  color: #756a88;
+  background: #faf8fd;
+  font-size: 23px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.peserta-modal-close:hover {
+  background: #f0eafd;
+}
+
+.peserta-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.peserta-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #493c5d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.peserta-form-field input,
+.peserta-form-field select {
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 13px;
+  border: 1px solid #e6e0ef;
+  border-radius: 10px;
+  outline: none;
+  color: var(--teks);
+  background: #fdfcff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.peserta-form-field input:focus,
+.peserta-form-field select:focus {
+  border-color: #a28be7;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(128, 100, 216, 0.1);
+}
+
+.peserta-form-field input::placeholder {
+  color: #aaa2b8;
+}
+
+.peserta-form-field small {
+  color: #948ba4;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Tombol modal */
+
+.peserta-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 7px;
+  padding-top: 19px;
+  border-top: 1px solid #f0edf6;
+}
+
+.peserta-cancel-button,
+.peserta-save-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.peserta-cancel-button {
+  border-color: #e9e3f0;
+  color: #6d627e;
+  background: #fff;
+}
+
+.peserta-cancel-button:hover:not(:disabled) {
+  background: #f7f4fb;
+}
+
+.peserta-save-button {
+  color: #fff;
+  background: linear-gradient(135deg, #8970dc, #7054c4);
+  box-shadow: 0 4px 11px rgba(112, 84, 196, 0.16);
+}
+
+.peserta-save-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #795fcf, #6245b2);
+  box-shadow: 0 6px 15px rgba(112, 84, 196, 0.23);
+}
+
+.peserta-cancel-button:disabled,
+.peserta-save-button:disabled,
+.peserta-modal-close:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+/* Responsif tablet */
+
+@media (max-width: 900px) {
+  .peserta-page {
+    padding: 26px 20px;
+  }
+
+  .peserta-heading {
+    align-items: flex-start;
+  }
+
+  .peserta-table-heading {
+    padding: 22px;
+  }
+
+  .peserta-toolbar {
+    padding-right: 22px;
+    padding-left: 22px;
+  }
+
+  .peserta-table th:first-child,
+  .peserta-table td:first-child {
+    padding-left: 20px;
+  }
+
+  .peserta-table th:last-child,
+  .peserta-table td:last-child {
+    padding-right: 20px;
+  }
+}
+
+/* Responsif ponsel */
+
+@media (max-width: 640px) {
+  .peserta-page {
+    padding: 22px 14px;
+  }
+
+  .peserta-heading {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 17px;
+  }
+
+  .peserta-heading h1 {
+    font-size: 29px;
+  }
+
+  .peserta-subtitle {
+    font-size: 12px;
+  }
+
+  .peserta-back-button {
+    align-self: flex-start;
+  }
+
+  .peserta-stat-card {
+    max-width: none;
+    min-height: 100px;
+    padding: 18px;
+  }
+
+  .peserta-stat-icon {
+    width: 47px;
+    height: 47px;
+  }
+
+  .peserta-stat-card h2 {
+    font-size: 25px;
+  }
+
+  .peserta-table-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .peserta-table-heading h2 {
+    font-size: 16px;
+  }
+
+  .peserta-add-button {
+    width: 100%;
+  }
+
+  .peserta-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 0 20px 18px;
+  }
+
+  .peserta-search {
+    box-sizing: border-box;
+    max-width: none;
+  }
+
+  .peserta-refresh-button {
+    align-self: flex-start;
+  }
+
+  .peserta-alert {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .peserta-table {
+    min-width: 1150px;
+  }
+
+  .peserta-table-footer {
+    padding: 14px 20px;
+  }
+
+  .peserta-page-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .peserta-modal {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .peserta-modal-heading h2 {
+    font-size: 19px;
+  }
+
+  .peserta-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .peserta-cancel-button,
+  .peserta-save-button {
+    width: 100%;
+  }
+}
+
+/* Kurangi animasi sesuai pengaturan perangkat */
+
+@media (prefers-reduced-motion: reduce) {
+  .peserta-page *,
+  .peserta-page *::before,
+  .peserta-page *::after,
+  .peserta-modal-overlay,
+  .peserta-modal {
+    animation: none !important;
+    transition: none !important;
+  }
+}

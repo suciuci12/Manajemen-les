@@ -1,0 +1,1522 @@
+
+/* =========================================
+   MANULI - HALAMAN PRESENSI ADMIN
+========================================= */
+
+.presensi-halaman {
+  min-height: 100vh;
+  padding: 30px;
+  background:
+    radial-gradient(circle at 5% 0%, #f0e8ff 0, transparent 28%),
+    #f8f7fc;
+  color: #342849;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.presensi-konten {
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.presensi-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.presensi-header-info {
+  min-width: 0;
+}
+
+.presensi-kembali {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #7450a8;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.presensi-kembali:hover {
+  color: #4d2c80;
+}
+
+.presensi-label-atas {
+  margin: 0 0 8px;
+  color: #8867b5;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.presensi-header h1 {
+  margin: 0;
+  color: #302442;
+  font-size: clamp(27px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.presensi-subjudul {
+  max-width: 650px;
+  margin: 10px 0 0;
+  color: #81778f;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.presensi-header-tombol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================================
+   TOMBOL UMUM
+========================================= */
+
+.presensi-tombol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 43px;
+  padding: 11px 17px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.presensi-tombol:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.presensi-tombol:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.presensi-tombol-utama {
+  color: #fff;
+  background: linear-gradient(135deg, #8962c3, #7044aa);
+  box-shadow: 0 5px 14px rgba(113, 67, 170, 0.17);
+}
+
+.presensi-tombol-utama:hover:not(:disabled) {
+  background: linear-gradient(135deg, #7850b3, #603592);
+  box-shadow: 0 7px 18px rgba(113, 67, 170, 0.23);
+}
+
+.presensi-tombol-terang {
+  color: #645278;
+  background: #fff;
+  border-color: #e8e1f0;
+}
+
+.presensi-tombol-terang:hover:not(:disabled) {
+  background: #f8f4ff;
+  border-color: #cdbce5;
+}
+
+/* =========================================
+   NOTIFIKASI
+========================================= */
+
+.presensi-pesan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 14px 17px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.presensi-pesan button {
+  flex-shrink: 0;
+  width: 29px;
+  height: 29px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.presensi-pesan.pesan-sukses {
+  color: #24774f;
+  background: #effbf4;
+  border-color: #c9efd8;
+}
+
+.presensi-pesan.pesan-error {
+  color: #b53e51;
+  background: #fff1f2;
+  border-color: #f7d0d5;
+}
+
+/* =========================================
+   KARTU STATISTIK
+========================================= */
+
+.presensi-statistik {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.presensi-kartu-statistik {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 20px 18px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #eee9f5;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(51, 34, 78, 0.035);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.presensi-kartu-statistik:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 24px rgba(51, 34, 78, 0.07);
+}
+
+.statistik-ikon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.presensi-kartu-statistik p {
+  margin: 0 0 5px;
+  color: #8c839a;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.presensi-kartu-statistik strong {
+  display: block;
+  color: #342849;
+  font-size: 27px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.statistik-total .statistik-ikon {
+  color: #7549b1;
+  background: #f0e8ff;
+}
+
+.statistik-hadir .statistik-ikon {
+  color: #258459;
+  background: #e3f8eb;
+}
+
+.statistik-izin .statistik-ikon {
+  color: #a9761b;
+  background: #fff3d9;
+}
+
+.statistik-sakit .statistik-ikon {
+  color: #397cc2;
+  background: #e4f1ff;
+}
+
+.statistik-alfa .statistik-ikon {
+  color: #c94f60;
+  background: #ffeaed;
+}
+
+/* =========================================
+   PANEL TABEL
+========================================= */
+
+.presensi-panel {
+  min-width: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #eee9f5;
+  border-radius: 18px;
+  box-shadow: 0 7px 28px rgba(51, 34, 78, 0.04);
+}
+
+.presensi-panel-kepala {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 23px 24px;
+  border-bottom: 1px solid #f0ecf5;
+}
+
+.presensi-panel-kepala h2 {
+  margin: 0;
+  color: #342849;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.presensi-panel-kepala p {
+  margin: 7px 0 0;
+  color: #8a8196;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.presensi-jumlah {
+  flex-shrink: 0;
+  padding: 9px 12px;
+  color: #7047a6;
+  background: #f4edff;
+  border: 1px solid #e9ddfb;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+/* =========================================
+   FILTER
+========================================= */
+
+.presensi-filter {
+  display: grid;
+  grid-template-columns: minmax(220px, 1.7fr) repeat(3, minmax(135px, 1fr)) auto;
+  align-items: end;
+  gap: 13px;
+  padding: 20px 24px;
+  background: #fdfcff;
+  border-bottom: 1px solid #f0ecf5;
+}
+
+.presensi-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.presensi-field label {
+  color: #625474;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.presensi-field input,
+.presensi-field select,
+.presensi-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  color: #3e324f;
+  background: #fff;
+  border: 1px solid #e5dfed;
+  border-radius: 10px;
+  outline: none;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.5;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.presensi-field input,
+.presensi-field select {
+  min-height: 42px;
+}
+
+.presensi-field textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+.presensi-field input:focus,
+.presensi-field select:focus,
+.presensi-field textarea:focus {
+  border-color: #a88ad3;
+  box-shadow: 0 0 0 3px rgba(142, 103, 194, 0.11);
+}
+
+.presensi-field input:disabled,
+.presensi-field select:disabled {
+  color: #aaa2b5;
+  background: #f5f3f8;
+  cursor: not-allowed;
+}
+
+.presensi-field small {
+  color: #91869e;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.tombol-reset {
+  min-height: 42px;
+  white-space: nowrap;
+}
+
+/* =========================================
+   TABEL PRESENSI
+========================================= */
+
+.presensi-tabel-pembungkus {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.presensi-tabel {
+  width: 100%;
+  min-width: 1390px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.presensi-tabel th,
+.presensi-tabel td {
+  padding: 14px 12px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0ecf5;
+}
+
+.presensi-tabel th {
+  color: #68557f;
+  background: #f7f4fc;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  white-space: nowrap;
+}
+
+.presensi-tabel td {
+  color: #625970;
+  background: #fff;
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.presensi-tabel tbody tr {
+  transition: background 0.18s ease;
+}
+
+.presensi-tabel tbody tr:hover td {
+  background: #fcfaff;
+}
+
+.presensi-tabel tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.presensi-tabel td strong {
+  display: block;
+  color: #392b4d;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.presensi-tabel td small {
+  display: block;
+  margin-top: 5px;
+  color: #948aa1;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.presensi-tabel th:nth-child(1),
+.presensi-tabel td:nth-child(1) {
+  width: 48px;
+  text-align: center;
+}
+
+.presensi-tabel th:nth-child(2),
+.presensi-tabel td:nth-child(2) {
+  width: 112px;
+}
+
+.presensi-tabel th:nth-child(3),
+.presensi-tabel td:nth-child(3) {
+  width: 155px;
+}
+
+.presensi-tabel th:nth-child(4),
+.presensi-tabel td:nth-child(4) {
+  width: 155px;
+}
+
+.presensi-tabel th:nth-child(5),
+.presensi-tabel td:nth-child(5) {
+  width: 125px;
+}
+
+.presensi-tabel th:nth-child(6),
+.presensi-tabel td:nth-child(6) {
+  width: 92px;
+}
+
+.presensi-tabel th:nth-child(7),
+.presensi-tabel td:nth-child(7) {
+  width: 122px;
+}
+
+.presensi-tabel th:nth-child(8),
+.presensi-tabel td:nth-child(8) {
+  width: 155px;
+}
+
+.presensi-tabel th:nth-child(9),
+.presensi-tabel td:nth-child(9) {
+  width: 165px;
+}
+
+.presensi-tabel th:nth-child(10),
+.presensi-tabel td:nth-child(10) {
+  width: 130px;
+}
+
+.presensi-tabel th:nth-child(11),
+.presensi-tabel td:nth-child(11) {
+  width: 165px;
+}
+
+.presensi-nomor {
+  color: #9b90aa !important;
+  font-size: 11px !important;
+}
+
+.presensi-tanggal strong {
+  white-space: nowrap;
+}
+
+.presensi-nama-peserta {
+  overflow-wrap: anywhere;
+}
+
+.presensi-ringkasan {
+  display: -webkit-box;
+  max-width: 100%;
+  overflow: hidden;
+  color: #71667f;
+  font-size: 11px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 65px;
+  padding: 7px 9px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.status-titik {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-hadir {
+  color: #278052;
+  background: #e9f9ef;
+  border-color: #d2f0dd;
+}
+
+.status-izin {
+  color: #a46e13;
+  background: #fff5dc;
+  border-color: #f8e8b8;
+}
+
+.status-sakit {
+  color: #3479bb;
+  background: #eaf4ff;
+  border-color: #d4e9ff;
+}
+
+.status-alfa {
+  color: #bf4a5c;
+  background: #ffedf0;
+  border-color: #f9d9df;
+}
+
+/* =========================================
+   FOTO DI TABEL
+========================================= */
+
+.kolom-foto {
+  white-space: normal;
+}
+
+.presensi-lihat-foto {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 8px 5px 5px;
+  color: #7048a7;
+  background: #faf7ff;
+  border: 1px solid #e7dcf8;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.presensi-lihat-foto:hover {
+  background: #f0e7ff;
+  border-color: #cbb7eb;
+  transform: translateY(-1px);
+}
+
+.presensi-thumbnail {
+  display: block;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 7px;
+  background: #eee8f6;
+}
+
+.presensi-belum-ada {
+  color: #aaa1b5;
+  font-size: 10px;
+}
+
+/* =========================================
+   AKSI TABEL
+========================================= */
+
+.presensi-aksi {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.presensi-aksi button,
+.presensi-pratinjau button.aksi-hapus {
+  padding: 7px 9px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.presensi-aksi button:hover {
+  transform: translateY(-1px);
+}
+
+.aksi-detail {
+  color: #67459a;
+  background: #f1eaff;
+  border-color: #e5d8fb !important;
+}
+
+.aksi-detail:hover {
+  background: #e7dbfc;
+}
+
+.aksi-edit {
+  color: #2e78b8;
+  background: #eaf4ff;
+  border-color: #d7e9fa !important;
+}
+
+.aksi-edit:hover {
+  background: #dceeff;
+}
+
+.aksi-hapus {
+  color: #c04d5c;
+  background: #fff0f1;
+  border-color: #f7d9de !important;
+}
+
+.aksi-hapus:hover {
+  background: #ffe1e5;
+}
+
+/* =========================================
+   TABEL KOSONG / MEMUAT
+========================================= */
+
+.presensi-tabel-kosong {
+  height: 210px;
+  padding: 35px !important;
+  text-align: center !important;
+  color: #958aa3 !important;
+}
+
+.presensi-tabel-kosong strong {
+  margin-top: 10px;
+  color: #57466d !important;
+  font-size: 14px !important;
+}
+
+.presensi-tabel-kosong p {
+  margin: 8px 0 0;
+  color: #94899f;
+  font-size: 12px;
+}
+
+.presensi-kosong-ikon,
+.presensi-memuat-ikon {
+  display: block;
+  color: #a68acb;
+  font-size: 30px;
+}
+
+.presensi-memuat-ikon {
+  animation: presensiPutar 1.1s linear infinite;
+}
+
+@keyframes presensiPutar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   CATATAN KAKI
+========================================= */
+
+.presensi-catatan-kaki {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 22px;
+  color: #9a91a7;
+  background: #fdfcff;
+  border-top: 1px solid #f0ecf5;
+  font-size: 10px;
+}
+
+.presensi-catatan-kaki > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.titik-status {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.titik-ungu {
+  background: #9470c4;
+}
+
+/* =========================================
+   LAPISAN MODAL UMUM
+========================================= */
+
+.presensi-lapisan-modal {
+  position: fixed;
+  z-index: 1500;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  overflow-y: auto;
+  background: rgba(30, 20, 45, 0.56);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: presensiOverlayMasuk 0.18s ease;
+}
+
+.presensi-modal {
+  width: min(620px, 100%);
+  max-height: calc(100vh - 44px);
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 19px;
+  box-shadow: 0 24px 75px rgba(25, 13, 43, 0.24);
+  animation: presensiModalMasuk 0.22s ease;
+}
+
+.presensi-modal-lebar {
+  width: min(820px, 100%);
+}
+
+.presensi-modal-kepala {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 23px 25px;
+  border-bottom: 1px solid #eee9f5;
+}
+
+.presensi-modal-kepala h2 {
+  margin: 4px 0 7px;
+  color: #342849;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.presensi-modal-kepala p:last-child {
+  margin: 0;
+  color: #8b8198;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.presensi-tutup-modal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  color: #786b89;
+  background: #f5f1fa;
+  border: 1px solid #eee7f6;
+  border-radius: 10px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.presensi-tutup-modal:hover {
+  color: #624092;
+  background: #ece2fb;
+}
+
+.presensi-tutup-modal:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   FORM TAMBAH DAN UBAH
+========================================= */
+
+.presensi-modal form {
+  padding: 23px 25px 0;
+}
+
+.presensi-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 17px;
+}
+
+.presensi-field-penuh {
+  grid-column: 1 / -1;
+}
+
+.presensi-pratinjau {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 8px;
+  padding: 12px;
+  background: #faf8fd;
+  border: 1px solid #eee7f6;
+  border-radius: 12px;
+}
+
+.presensi-pratinjau-gambar {
+  position: relative;
+  display: block;
+  width: 105px;
+  height: 90px;
+  flex-shrink: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #eee8f6;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.presensi-pratinjau-gambar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.presensi-pratinjau-gambar span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 6px;
+  color: #fff;
+  background: rgba(42, 27, 60, 0.72);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.presensi-pratinjau > div {
+  min-width: 0;
+}
+
+.presensi-pratinjau > div strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #4b3b60;
+  font-size: 12px;
+}
+
+.presensi-pratinjau > div p {
+  margin: 6px 0 10px;
+  color: #8d829a;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.presensi-modal-kaki {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 18px 25px 22px;
+  margin-top: 22px;
+  background: #fdfcff;
+  border-top: 1px solid #eee9f5;
+  border-radius: 0 0 19px 19px;
+}
+
+/* =========================================
+   DETAIL PRESENSI
+========================================= */
+
+.presensi-detail {
+  padding: 12px 25px 0;
+}
+
+.presensi-detail-baris {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.75fr) minmax(0, 1.25fr);
+  gap: 15px;
+  align-items: start;
+  padding: 13px 0;
+  border-bottom: 1px solid #f0ecf5;
+}
+
+.presensi-detail-baris > span {
+  color: #8c809b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.presensi-detail-baris > strong {
+  color: #3d304e;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.presensi-detail-baris p {
+  margin: 0;
+  color: #5f536f;
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.presensi-detail-baris.detail-kolom {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.presensi-detail-foto-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  max-width: 100%;
+  padding: 8px;
+  color: #7048a7;
+  background: #faf7ff;
+  border: 1px solid #e9def7;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  text-align: left;
+  cursor: pointer;
+}
+
+.presensi-detail-foto-link img {
+  display: block;
+  width: 64px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.presensi-detail-foto-link:hover {
+  background: #f0e7ff;
+}
+
+/* =========================================
+   POP-UP FOTO UKURAN BESAR
+========================================= */
+
+.presensi-foto-overlay {
+  position: fixed;
+  z-index: 2100;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  overflow-y: auto;
+  background: rgba(25, 17, 40, 0.72);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  animation: presensiOverlayMasuk 0.2s ease;
+}
+
+.presensi-foto-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(820px, 100%);
+  max-height: calc(100vh - 44px);
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0 24px 80px rgba(20, 10, 35, 0.3);
+  animation: presensiModalMasuk 0.22s ease;
+}
+
+.presensi-foto-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 23px;
+  border-bottom: 1px solid #eee9f5;
+}
+
+.presensi-foto-header h2 {
+  margin: 4px 0 6px;
+  color: #342849;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.presensi-foto-header p:last-child {
+  margin: 0;
+  color: #82788f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.presensi-foto-isi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  padding: 20px;
+  overflow: auto;
+  background: #f7f5fa;
+}
+
+.presensi-foto-besar {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 5px 24px rgba(35, 22, 50, 0.12);
+}
+
+.presensi-foto-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 23px;
+  background: #fff;
+  border-top: 1px solid #eee9f5;
+}
+
+/* =========================================
+   ANIMASI
+========================================= */
+
+@keyframes presensiOverlayMasuk {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes presensiModalMasuk {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   RESPONSIF TABLET
+========================================= */
+
+@media (max-width: 1200px) {
+  .presensi-halaman {
+    padding: 22px;
+  }
+
+  .presensi-statistik {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .presensi-filter {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .presensi-field-cari {
+    grid-column: 1 / -1;
+  }
+
+  .tombol-reset {
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .presensi-halaman {
+    padding: 16px;
+  }
+
+  .presensi-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .presensi-header-tombol {
+    width: 100%;
+  }
+
+  .presensi-header-tombol .presensi-tombol {
+    flex: 1;
+  }
+
+  .presensi-kembali {
+    margin-bottom: 18px;
+  }
+
+  .presensi-statistik {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .presensi-kartu-statistik {
+    padding: 15px 12px;
+    gap: 10px;
+  }
+
+  .statistik-ikon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+
+  .presensi-kartu-statistik strong {
+    font-size: 23px;
+  }
+
+  .presensi-panel-kepala {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 19px;
+  }
+
+  .presensi-filter {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .presensi-field-cari {
+    grid-column: auto;
+  }
+
+  .presensi-jumlah {
+    align-self: flex-start;
+  }
+
+  .presensi-catatan-kaki {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 14px 17px;
+  }
+
+  .presensi-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .presensi-field-penuh {
+    grid-column: auto;
+  }
+
+  .presensi-modal-kepala {
+    padding: 19px;
+  }
+
+  .presensi-modal form {
+    padding: 19px 19px 0;
+  }
+
+  .presensi-modal-kaki {
+    padding: 16px 19px 19px;
+  }
+
+  .presensi-detail {
+    padding: 10px 19px 0;
+  }
+}
+
+/* =========================================
+   RESPONSIF PONSEL
+========================================= */
+
+@media (max-width: 480px) {
+  .presensi-halaman {
+    padding: 12px;
+  }
+
+  .presensi-header h1 {
+    font-size: 27px;
+  }
+
+  .presensi-subjudul {
+    font-size: 12px;
+  }
+
+  .presensi-header-tombol {
+    flex-direction: column;
+  }
+
+  .presensi-header-tombol .presensi-tombol {
+    width: 100%;
+    flex: auto;
+  }
+
+  .presensi-kartu-statistik {
+    padding: 13px 10px;
+  }
+
+  .presensi-kartu-statistik p {
+    font-size: 10px;
+  }
+
+  .presensi-kartu-statistik strong {
+    font-size: 21px;
+  }
+
+  .presensi-modal,
+  .presensi-modal-lebar {
+    max-height: calc(100vh - 24px);
+    border-radius: 15px;
+  }
+
+  .presensi-lapisan-modal {
+    padding: 12px;
+  }
+
+  .presensi-modal-kepala h2 {
+    font-size: 19px;
+  }
+
+  .presensi-modal-kaki {
+    flex-direction: column-reverse;
+  }
+
+  .presensi-modal-kaki .presensi-tombol {
+    width: 100%;
+  }
+
+  .presensi-detail-baris {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .presensi-foto-overlay {
+    padding: 12px;
+  }
+
+  .presensi-foto-modal {
+    max-height: calc(100vh - 24px);
+    border-radius: 15px;
+  }
+
+  .presensi-foto-header {
+    padding: 16px;
+  }
+
+  .presensi-foto-header h2 {
+    font-size: 18px;
+  }
+
+  .presensi-foto-isi {
+    padding: 12px;
+  }
+
+  .presensi-foto-besar {
+    max-height: 55vh;
+  }
+
+  .presensi-foto-footer {
+    padding: 12px 16px;
+  }
+}
+
+/* =========================================
+   CETAK / SIMPAN PDF
+========================================= */
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 12mm;
+  }
+
+  body {
+    color: #222 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .presensi-halaman {
+    min-height: auto;
+    padding: 0;
+    background: #fff !important;
+  }
+
+  .presensi-konten {
+    width: 100%;
+    max-width: none;
+  }
+
+  .no-print,
+  .presensi-header-tombol,
+  .presensi-filter,
+  .presensi-aksi,
+  .presensi-lapisan-modal,
+  .presensi-foto-overlay {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .presensi-kepala-cetak {
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .presensi-kepala-cetak h1 {
+    margin: 0 0 7px;
+    font-size: 20px;
+  }
+
+  .presensi-kepala-cetak p {
+    margin: 4px 0;
+    font-size: 10px;
+  }
+
+  .presensi-statistik {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .presensi-kartu-statistik {
+    padding: 8px;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .presensi-kartu-statistik strong {
+    font-size: 16px;
+  }
+
+  .statistik-ikon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .presensi-panel {
+    overflow: visible;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+
+  .presensi-panel-kepala {
+    padding: 10px;
+  }
+
+  .presensi-panel-kepala h2 {
+    font-size: 14px;
+  }
+
+  .presensi-tabel-pembungkus {
+    overflow: visible;
+  }
+
+  .presensi-tabel {
+    width: 100%;
+    min-width: 0;
+    table-layout: auto;
+    border-collapse: collapse;
+    font-size: 8px;
+  }
+
+  .presensi-tabel th,
+  .presensi-tabel td {
+    padding: 5px;
+    color: #222 !important;
+    border: 1px solid #ccc;
+    font-size: 8px;
+    overflow-wrap: anywhere;
+  }
+
+  .presensi-tabel th {
+    background: #eee !important;
+  }
+
+  .presensi-tabel td strong {
+    font-size: 8px;
+  }
+
+  .presensi-tabel td small {
+    font-size: 7px;
+  }
+
+  .presensi-ringkasan {
+    display: block;
+    overflow: visible;
+    font-size: 8px;
+    -webkit-line-clamp: unset;
+  }
+
+  .presensi-lihat-foto {
+    padding: 0;
+    background: transparent;
+    border: 0;
+  }
+
+  .presensi-lihat-foto span {
+    display: none;
+  }
+
+  .presensi-thumbnail {
+    width: 28px;
+    height: 28px;
+  }
+
+  .status-badge {
+    padding: 3px 5px;
+    font-size: 7px;
+  }
+
+  .presensi-catatan-kaki {
+    padding: 8px;
+    border-top: 1px solid #ccc;
+  }
+
+  .presensi-panel,
+  .presensi-kartu-statistik,
+  .presensi-tabel tr {
+    break-inside: avoid;
+  }
+}

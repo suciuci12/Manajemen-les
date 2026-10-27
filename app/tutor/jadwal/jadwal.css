@@ -1,0 +1,685 @@
+
+.jadwal-tutor {
+  --ungu: #7954c7;
+  --ungu-gelap: #56349b;
+  --ungu-muda: #f2edff;
+  --teks: #29233b;
+  --teks-redup: #817b91;
+  --garis: #ece7f5;
+  --putih: #ffffff;
+
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px;
+  color: var(--teks);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.jadwal-tutor * {
+  box-sizing: border-box;
+}
+
+.jadwal-tutor button,
+.jadwal-tutor input,
+.jadwal-tutor textarea {
+  font: inherit;
+}
+
+.jadwal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.jadwal-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.jadwal-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  padding: 11px 16px;
+  border: 1px solid #e5d9ff;
+  border-radius: 12px;
+  color: #6742ae;
+  background: #f7f2ff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.jadwal-back-btn span {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.jadwal-back-btn:hover {
+  background: #eae0ff;
+  box-shadow: 0 5px 14px rgba(104, 66, 174, 0.1);
+  transform: translateX(-3px);
+}
+
+.jadwal-back-btn:focus-visible,
+.jadwal-back-bottom:focus-visible {
+  outline: 3px solid rgba(121, 84, 199, 0.3);
+  outline-offset: 3px;
+}
+
+.jadwal-eyebrow {
+  margin: 0 0 9px;
+  color: var(--ungu);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.jadwal-header h1 {
+  margin: 0;
+  font-size: clamp(27px, 3vw, 36px);
+  letter-spacing: -1px;
+  line-height: 1.25;
+}
+
+.jadwal-subtitle {
+  margin: 10px 0 0;
+  color: var(--teks-redup);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.jadwal-total {
+  min-width: 145px;
+  padding: 19px 22px;
+  border: 1px solid #e5d9ff;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f5f0ff, #ffffff);
+  box-shadow: 0 8px 25px rgba(104, 66, 174, 0.05);
+}
+
+.jadwal-total span {
+  display: block;
+  color: var(--teks-redup);
+  font-size: 12px;
+}
+
+.jadwal-total strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--ungu-gelap);
+  font-size: 31px;
+}
+
+.jadwal-panel {
+  margin-bottom: 24px;
+  padding: 26px;
+  border: 1px solid var(--garis);
+  border-radius: 20px;
+  background: var(--putih);
+  box-shadow: 0 8px 28px rgba(55, 35, 93, 0.045);
+  scroll-margin-top: 24px;
+}
+
+.jadwal-panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 23px;
+}
+
+.jadwal-panel-heading h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.jadwal-panel-heading p {
+  margin: 8px 0 0;
+  color: var(--teks-redup);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.jadwal-search {
+  width: min(100%, 340px);
+  min-height: 44px;
+  padding: 11px 14px;
+  border: 1px solid var(--garis);
+  border-radius: 11px;
+  outline: none;
+  color: var(--teks);
+  background: #fcfbff;
+  font-size: 13px !important;
+  transition: 0.2s ease;
+}
+
+.jadwal-search:focus,
+.jadwal-form input:focus,
+.jadwal-form textarea:focus {
+  border-color: var(--ungu);
+  box-shadow: 0 0 0 3px rgba(121, 84, 199, 0.12);
+}
+
+.jadwal-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.jadwal-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.jadwal-table th {
+  padding: 15px 13px;
+  color: var(--teks-redup);
+  background: #faf8ff;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.jadwal-table th:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.jadwal-table th:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.jadwal-table td {
+  padding: 17px 13px;
+  border-bottom: 1px solid #f0edf5;
+  font-size: 13px;
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
+.jadwal-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.jadwal-table tbody tr:hover {
+  background: #fdfbff;
+}
+
+.jadwal-table td strong {
+  font-weight: 700;
+}
+
+.jadwal-waktu {
+  display: inline-block;
+  padding: 6px 9px;
+  border-radius: 8px;
+  color: #6742ae;
+  background: #f3edff;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.jadwal-edit-btn,
+.jadwal-save-btn,
+.jadwal-cancel-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.jadwal-edit-btn {
+  color: var(--ungu-gelap);
+  background: var(--ungu-muda);
+  white-space: nowrap;
+}
+
+.jadwal-edit-btn:hover {
+  background: #e5d8ff;
+  transform: translateY(-1px);
+}
+
+.jadwal-edit-btn span {
+  font-size: 15px;
+}
+
+.jadwal-table-footer {
+  margin-top: 17px;
+  padding-top: 14px;
+  border-top: 1px solid #f0edf5;
+  color: var(--teks-redup);
+  font-size: 12px;
+}
+
+.jadwal-form-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border: 1px solid #e8dfff;
+  border-radius: 30px;
+  color: #6742ae;
+  background: #f8f4ff;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.jadwal-edit-info {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 25px;
+  padding: 16px;
+  border: 1px solid #e8dfff;
+  border-radius: 13px;
+  background: #faf7ff;
+}
+
+.jadwal-edit-info strong {
+  display: block;
+  font-size: 14px;
+}
+
+.jadwal-edit-info p {
+  margin: 6px 0 0;
+  color: var(--teks-redup);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.jadwal-info-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  color: var(--ungu);
+  background: var(--ungu-muda);
+  font-size: 19px;
+}
+
+.jadwal-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.jadwal-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #514961;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.jadwal-form input,
+.jadwal-form textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 13px;
+  border: 1px solid #e7e1f0;
+  border-radius: 10px;
+  outline: none;
+  color: var(--teks);
+  background: #fdfcff;
+  font-size: 13px !important;
+  font-weight: 400;
+  transition: 0.2s ease;
+}
+
+.jadwal-form textarea {
+  min-height: 105px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.jadwal-alasan {
+  grid-column: 1 / -1;
+}
+
+.jadwal-karakter {
+  align-self: flex-end;
+  margin-top: -3px;
+  color: var(--teks-redup);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.jadwal-peringatan {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin-top: 23px;
+  padding: 15px;
+  border: 1px solid #eee3c4;
+  border-radius: 11px;
+  color: #806327;
+  background: #fffaf0;
+}
+
+.jadwal-peringatan > span {
+  font-size: 17px;
+}
+
+.jadwal-peringatan p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.jadwal-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 11px;
+  margin-top: 25px;
+}
+
+.jadwal-save-btn {
+  min-width: 175px;
+  color: #fff;
+  background: var(--ungu);
+}
+
+.jadwal-save-btn:hover {
+  background: var(--ungu-gelap);
+  box-shadow: 0 5px 14px rgba(86, 52, 155, 0.17);
+}
+
+.jadwal-cancel-btn {
+  min-width: 100px;
+  color: #625b70;
+  background: #f0edf5;
+}
+
+.jadwal-cancel-btn:hover {
+  background: #e5e0ec;
+}
+
+.jadwal-save-btn:disabled,
+.jadwal-cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.jadwal-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: jadwal-putar 0.7s linear infinite;
+}
+
+@keyframes jadwal-putar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.jadwal-catatan {
+  margin: 19px 0 0;
+  color: var(--teks-redup);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.jadwal-pilih-info,
+.jadwal-kosong {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 34px 20px;
+  border: 1px dashed #e3d9f3;
+  border-radius: 13px;
+  color: var(--teks-redup);
+  background: #fcfaff;
+  text-align: center;
+  font-size: 13px;
+}
+
+.jadwal-pilih-info > strong,
+.jadwal-kosong > strong {
+  margin-top: 12px;
+  color: var(--teks);
+  font-size: 14px;
+}
+
+.jadwal-pilih-info p,
+.jadwal-kosong p {
+  max-width: 440px;
+  margin: 8px 0 0;
+  line-height: 1.8;
+}
+
+.jadwal-kosong-icon {
+  font-size: 28px;
+  color: var(--ungu);
+}
+
+.jadwal-alert {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 15px 17px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.jadwal-alert.success {
+  border-color: #c9ebd8;
+  color: #226b46;
+  background: #effaf3;
+}
+
+.jadwal-alert.error {
+  border-color: #f1d0d5;
+  color: #a33143;
+  background: #fff3f4;
+}
+
+.jadwal-alert button {
+  flex: 0 0 auto;
+  padding: 0 4px;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.jadwal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 5px 2px 15px;
+}
+
+.jadwal-back-bottom {
+  padding: 11px 15px;
+  border: 1px solid #e5d9ff;
+  border-radius: 10px;
+  color: #6742ae;
+  background: #f7f2ff;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.jadwal-back-bottom:hover {
+  background: #eae0ff;
+}
+
+.jadwal-footer p {
+  margin: 0;
+  color: var(--teks-redup);
+  font-size: 11px;
+}
+
+@media (max-width: 1000px) {
+  .jadwal-tutor {
+    padding: 24px;
+  }
+
+  .jadwal-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .jadwal-panel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .jadwal-search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .jadwal-tutor {
+    padding: 17px;
+  }
+
+  .jadwal-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .jadwal-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .jadwal-total strong {
+    margin: 0;
+    font-size: 25px;
+  }
+
+  .jadwal-panel {
+    padding: 18px;
+    border-radius: 15px;
+  }
+
+  .jadwal-form-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .jadwal-alasan {
+    grid-column: auto;
+  }
+
+  .jadwal-form-badge {
+    white-space: normal;
+  }
+
+  .jadwal-table-wrap {
+    overflow: visible;
+  }
+
+  .jadwal-table,
+  .jadwal-table tbody,
+  .jadwal-table tr,
+  .jadwal-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .jadwal-table thead {
+    display: none;
+  }
+
+  .jadwal-table tbody tr {
+    margin-bottom: 15px;
+    padding: 10px 13px;
+    border: 1px solid var(--garis);
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .jadwal-table td {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 10px;
+    padding: 11px 0;
+    border-bottom: 1px solid #f0edf5;
+    overflow-wrap: anywhere;
+  }
+
+  .jadwal-table td::before {
+    content: attr(data-label);
+    color: var(--teks-redup);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .jadwal-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .jadwal-edit-btn {
+    width: 100%;
+  }
+
+  .jadwal-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .jadwal-form-actions button {
+    width: 100%;
+    min-height: 45px;
+  }
+
+  .jadwal-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .jadwal-back-bottom {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jadwal-tutor *,
+  .jadwal-tutor *::before,
+  .jadwal-tutor *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
